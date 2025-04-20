@@ -35,21 +35,23 @@ This is a cross-platform mobile app built with **Ionic + Angular** that allows u
 
 1. Clone the repository:
    git clone https://github.com/AvilGit/receipt-tracker.git
-   cd receipt-tracker
 
-2. Install dependencies:
+2. cd receipt-tracker
+
+3. Install dependencies:
 
 npm install
 
-2. Run the app in development mode:
+4. Run the app in development mode:
 
 ionic serve
-goto: http://localhost:8100 to see the app running
 
-3. To test on a real device or emulator on Android Studio:
+5. goto: http://localhost:8100 to see the app running
 
-ionic capacitor add android
-ionic capacitor open android
+6. To test on a real device or emulator on Android Studio:
+
+-ionic capacitor add android
+-ionic capacitor open android
 
 
 📝 Future Improvements
