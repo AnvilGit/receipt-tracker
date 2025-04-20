@@ -67,6 +67,18 @@ This is a cross-platform mobile app built with **Ionic + Angular** that allows u
 
 • Intergrate API with JPA
 
+### Screenshots:
+
+![androis_studio_emulator1](https://github.com/user-attachments/assets/7b77eadc-ba78-4bc1-9bf2-759c25df7354)
+
+![androis_studio_emulator2](https://github.com/user-attachments/assets/7dfa3569-c39c-4858-b04e-b467d355f718)
+
+![oneplus9_1](https://github.com/user-attachments/assets/fa70fdc7-c6b7-46d7-a134-d3aff4ebffe6)
+
+![oneplus9_2](https://github.com/user-attachments/assets/ee159cca-7d25-444e-9280-311d5a6507c1)
+
+
+
 
 
 
