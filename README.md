@@ -50,8 +50,8 @@ This is a cross-platform mobile app built with **Ionic + Angular** that allows u
 
 6. To test on a real device or emulator on Android Studio:
 
-- ionic capacitor add android
-- ionic capacitor open android
+- ionic cap add android
+- ionic cap open android
 
 
 ### 📝 Future Improvements
