@@ -40,11 +40,11 @@ This is a cross-platform mobile app built with **Ionic + Angular** that allows u
 
 3. Install dependencies:
 
-npm install
+- npm install
 
 4. Run the app in development mode:
 
-ionic serve
+- ionic serve
 
 5. goto: http://localhost:8100 to see the app running
 
