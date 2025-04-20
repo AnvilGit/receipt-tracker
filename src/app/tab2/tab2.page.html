@@ -1,17 +1,129 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 2
-    </ion-title>
+<!--1 HEADER: App bar with title -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button
+        mode="md"
+        defaultHref="/tabs/tab1"
+      ></ion-back-button>
+    </ion-buttons>
+
+    <ion-title class="ion-text-center">Receipts</ion-title>
+
+    <ion-buttons slot="end">
+      <ion-back-button
+        icon="arrow-forward-outline"
+        mode="md"
+        defaultHref="/tabs/tab3"
+      ></ion-back-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
-    </ion-toolbar>
-  </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+<!--2 TOTAL CLAIM CARD: Shows the total amount claimed -->
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="ion-text-center">Total to Claim</ion-card-title>
+    </ion-card-header>
+    <ion-card-content class="ion-text-center">
+      <h2>£ {{ getTotalClaim() | number:'1.2-2' }}</h2>
+    </ion-card-content>
+  </ion-card>
+
+<!--3 FILTER SEGMENT: Switch between All / Claimed / Unclaimed receipts -->
+<ion-segment [(ngModel)]="filter" value="all" style="margin: 12px;">
+  <ion-segment-button value="all">All</ion-segment-button>
+  <ion-segment-button value="claimed">Claimed</ion-segment-button>
+  <ion-segment-button value="unclaimed">Unclaimed</ion-segment-button>
+</ion-segment>
+
+<!--4 RECEIPTS LIST: Loops through filtered photos -->
+<ion-card *ngFor="let photo of getFilteredPhotos(); let i = index">
+
+  <!--5 IMAGE PREVIEW: Shows receipt image -->
+  <ion-img
+    *ngIf="photo.webviewPath"
+    [src]="photo.webviewPath"
+    (click)="viewImage(photo)"   
+    style="width: 120px; height: 120px; object-fit: cover; cursor: pointer; border-radius: 8px; margin: 8px"
+    
+  ></ion-img>
+
+  <!--6 RECEIPT DETAILS & ACTIONS -->
+  <ion-item>
+    <ion-label>
+      <!-- Static Info: Receipt number & timestamp -->
+      <h2>Receipt {{ i + 1 }}</h2>
+      <p>Date & Time: {{ photo.timestamp | date: 'medium' }}</p>
+
+      <!--7 EDIT MODE: Only shown when photo is in edit mode -->
+      <ng-container *ngIf="photo.isEditing">
+        
+        <!--8 CATEGORY SELECTOR -->
+        <ion-select
+          [(ngModel)]="photo.category"
+          placeholder="Select type"
+          interface="popover"
+          style="margin-top: 8px;"
+          [disabled]="!!photo.claimed"
+  
+        >
+          <ion-select-option value="travel">Travel</ion-select-option>
+          <ion-select-option value="food">Food</ion-select-option>
+          <ion-select-option value="hotel">Hotel</ion-select-option>
+          <ion-select-option value="fuel">Fuel</ion-select-option>
+          <ion-select-option value="medical">Medical</ion-select-option>
+          <ion-select-option value="others">Others</ion-select-option>
+        </ion-select>
+
+        <!--9 AMOUNT INPUT FIELD -->
+        <ion-input
+          [(ngModel)]="photo.label"
+          type="number"
+          placeholder="Enter amount"
+          min="0"
+          step="0.05"
+          style="margin-top: 8px; border: 1px solid #ccc; border-radius: 6px; padding: 8px;"
+          [disabled]="!!photo.claimed"
+        ></ion-input>
+
+        <!--10 CLAIM BUTTON: Marks receipt as claimed -->
+        <ion-button
+          expand="default"
+          size="default"
+          [disabled] = "photo.claimed"
+          (click)="claimReceipt(i)"
+          style="margin-top: 10px;"
+          color="{{ photo.claimed ? 'success' : 'primary' }}"
+        >
+          {{ photo.claimed ? 'Claimed' : 'Claim' }}
+        </ion-button>
+      </ng-container>
+    </ion-label>
+
+    <!--11 ACTION BUTTONS: Edit and Delete -->
+    <ion-buttons slot="end">
+      <!-- Edit toggle button -->
+      <ion-button fill="clear" color="primary" (click)="editPhoto(i)" [disabled]="photo.claimed">
+        <ion-icon name="create-outline"></ion-icon>
+      </ion-button>
+
+      <!--12 Delete receipt button -->
+      <ion-button fill="clear" color="danger" (click)="deletePhoto(i)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-item>
+</ion-card>
 </ion-content>
+
+
+<!--13 FLOATING ACTION BUTTON: Open camera to add a new photo -->
+<ion-fab vertical="bottom" horizontal="center" slot="fixed">
+  <ion-fab-button (click)="addPhotoToGallery()">
+    <ion-icon name="camera"></ion-icon>
+  </ion-fab-button>
+</ion-fab>
+

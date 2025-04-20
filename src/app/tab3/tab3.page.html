@@ -1,17 +1,42 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 3
-    </ion-title>
+<ion-content>
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button
+          mode="md"
+          defaultHref="/tabs/tab2"
+        ></ion-back-button>
+      </ion-buttons>
+  
+      <ion-title class="ion-text-center">
+        About
+      </ion-title>
   </ion-toolbar>
-</ion-header>
-
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 3</ion-title>
-    </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 3 page"></app-explore-container>
+<ion-card>
+  <ion-card-header>
+    <ion-img src="assets/images/speaker-background.png"></ion-img>
+    <div style="width: 100%; border-top: 1px solid #d4d4d4; margin: 8px 0;"></div>
+    <ion-card-title>Claim your receipt</ion-card-title>
+    <p>Welcome to <strong>Receipt Tracker</strong>, the ultimate app for managing your receipts!</p>
+    <p>Whether you're tracking expenses for travel, food, medical, or anything else, our app makes it simple to capture, organize, and claim your receipts.</p>
+
+    <p><strong>Key Features:</strong></p>
+    <ul>
+      <li><strong>Take Photos:</strong> Snap pictures of your receipts for easy storage.</li>
+      <li><strong>Organize Receipts:</strong> Sort your receipts by category and date for quick access.</li>
+      <li><strong>Categorize Expenses:</strong> Assign a category and label the amount.</li>
+      <li><strong>Claim Receipts:</strong> Easily mark receipts as claimed to track your finances.</li>
+      <li><strong>Simple Interface:</strong> Organize your receipts in a clear, user-friendly way.</li>
+      <li><strong>Future JPA integration:</strong> API to communicate with JPA in future.</li>
+    </ul>
+  </ion-card-header>
+
+  <ion-card-content>
+ 
+    <ion-button color="primary" routerLink="/tabs/tab1" expand="block">Home</ion-button>
+  </ion-card-content>
+</ion-card>
+
 </ion-content>
