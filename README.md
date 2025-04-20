@@ -50,11 +50,11 @@ ionic serve
 
 6. To test on a real device or emulator on Android Studio:
 
--ionic capacitor add android
--ionic capacitor open android
+- ionic capacitor add android
+- ionic capacitor open android
 
 
-📝 Future Improvements
+### 📝 Future Improvements
 • Cloud sync or backup option
 
 • OCR support for automatic receipt reading
@@ -68,8 +68,8 @@ ionic serve
 
 
 
-🙌 Acknowledgements
+### 🙌 Acknowledgements
 Built with ❤️ using Ionic, Angular, and Capacitor.
 
-📃 License
+### 📃 License
 This project is licensed under the MIT License.
