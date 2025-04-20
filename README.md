@@ -34,7 +34,7 @@ This is a cross-platform mobile app built with **Ionic + Angular** that allows u
 ### Setup
 
 1. Clone the repository:
-   git clone https://github.com/AvilGit/receipt-tracker.git
+   - git clone https://github.com/AvilGit/receipt-tracker.git
 
 2. cd receipt-tracker
 
